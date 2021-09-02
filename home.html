@@ -2,9 +2,202 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>Home</title> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+      <style type="text/css">
+
+           body{
+    margin: 0;
+    padding: 0;
+
+  }
+  li{
+    color: white;
+    padding: 10px;
+    margin-right: 35px;
+  }
+  a{
+    color:#45c1bc;
+  }
+  #nav{
+    color: #45c1bc;
+
+  }
+  #navhead{
+   background:white;
+   box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+   opacity: 0.85;
+ }
+ #navbarSupportedContent>ul{
+  font-size: 0.74em;
+  font-weight: bolder;
+}
+#list{
+  margin-right: 80px;
+}
+#nav:hover{
+  color: white;
+  text-decoration: none;
+  background-color:#35c1bc;
+  border-radius: 45px;
+  padding: 10px 20px;
+}
+      </style>
 </head>
 <body>
-    <h1 style="text-align: center;">New house will be updated soon.</h1>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navhead">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <img style="margin-left: 40px;" width="55" height="55" src="logo.png">
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul id="navbar" class="navbar-nav ">
+        <li>
+          <a  id="nav"  href="#about">ABOUT US<span class="sr-only">(current)</span></a>
+        </li>
+
+         <li>
+          <a  id="nav"  href="#about">SERVICES<span class="sr-only">(current)</span></a>
+        </li>
+
+         <li>
+          <a  id="nav"  href="#about">CONTACT US<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li>
+          <a  id="nav"  href="#about">POST YOUR PROPERTY<span class="sr-only">(current)</span></a>
+        </li>
+        <li >
+          <a  data-toggle="modal" data-target="#myModal2" id="nav"  href="#">SIGN IN</a>
+        </li>
+
+        <li id="list" >
+          <a  data-toggle="modal" data-target="#myModal3" id="nav"   href="#contact">SIGN UP</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+    <div class="modal" id="myModal2">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+           <h4 style="color: #35c1bc;" class="modal-title">Welcome to Homely!</h4>
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+
+         <!-- Modal body -->
+         <div class="modal-body">
+
+           <form class="form" action="login2.php" method="post">
+
+
+
+            <?php
+            if (isset($_GET['error'])) {?>
+             <p class="error"><?php echo $_GET['error']; ?></p>
+
+
+           <?php } ?>
+           <!--  <label for="email">Email:</label> -->
+
+           <div class="input-icons">
+            <i class="fa fa-user icon"></i>
+            <input type="text" class="form-control input-field" placeholder="Username" name="uname">
+
+            <br>
+            <!--  <label for="pwd">Password:</label> -->
+            <i class="fa fa-unlock-alt icon" aria-hidden="true"></i>
+            <input type="Password" class="form-control input-field" placeholder="Password" name="password">
+            <br>
+          </div>
+
+          <button type="submit" style="background: #35c1bc;color: white;" class="btn">Sign in</button>
+
+
+        </form>
+
+      </div>
+
+      <a data-toggle="modal" data-target="#myModal3" style="text-align: center;text-decoration: none;color:#35c1bc;padding-bottom: 30px;" href="#">Don't have an account ? Create here</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal" id="myModal3">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+       <h4 style="color: #35c1bc;" class="modal-title">Create an account</h4>
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+
+     <!-- Modal body -->
+     <div class="modal-body">
+
+       <form class="form" action="register.php" method="post">
+
+
+        <?php if (isset($_GET['error'])) { ?>
+        <p class="error"><?php echo $_GET['error']; ?></p>
+      <?php } ?>
+
+          <?php if (isset($_GET['success'])) { ?>
+               <p class="success"><?php echo $_GET['success']; ?></p>
+          <?php } ?>
+
+
+       <!--  <label for="email">Email:</label> -->
+       <div class="input-icons">
+
+        <i class="fa fa-user icon"></i>
+         <?php if (isset($_GET['name'])) { ?>
+        <input type="text" class="form-control input-field" placeholder="Enter fullName" name="name" value="<?php echo $_GET['name']; ?>"><br>
+          <?php }else{ ?>
+               <input type="text" class="form-control input-field" placeholder="Enter fullName" name="name"><br>
+          <?php }?>
+
+
+        <i class="fa fa-user icon"></i>
+        <?php if (isset($_GET['uname'])) { ?>
+        <input type="text" class="form-control input-field" placeholder="Email or Username " name="uname" value="<?php echo $_GET['uname']; ?>"><br>
+          <?php }else{ ?>
+               <input type="text" class="form-control input-field" placeholder="Email or Username " name="uname"><br>
+          <?php }?>
+
+
+        <!--  <label for="pwd">Password:</label> -->
+        <i class="fa fa-unlock-alt icon" aria-hidden="true"></i>
+        <input type="Password" class="form-control input-field" placeholder="Password" name="password">
+        <br>
+
+        <i class="fa fa-unlock-alt icon" aria-hidden="true"></i>
+        <input type="Password" class="form-control input-field" placeholder="Confirm Password" name="re_password">
+      </div>
+
+      <br>
+      <button type="submit" style="background: #35c1bc;color: white;" class="btn">Sign Up</button>
+    </form>
+  </div>
+
+  <a data-toggle="modal" data-target="#myModal2" style="text-align: center;text-decoration: none;color:#35c1bc;padding-bottom: 30px;" href="#">Have an account? Sign in</a>
+
+</div>
+</div>
+</div>
+
+
+
+
 </body>
 </html>
